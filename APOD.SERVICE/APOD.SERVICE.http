@@ -1,0 +1,11 @@
+@APOD.SERVICE_HostAddress = http://localhost:5009
+
+GET {{APOD.SERVICE_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{APOD.SERVICE_HostAddress}}/todos/1
+Accept: application/json
+
+###
