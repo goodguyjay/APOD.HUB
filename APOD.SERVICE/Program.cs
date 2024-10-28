@@ -1,4 +1,5 @@
 using APOD.SERVICE.Core;
+using APOD.SERVICE.Services;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.OpenApi.Models;
 
@@ -14,6 +15,9 @@ builder.Services.AddLogging(config =>
     config.AddConsole();
     config.SetMinimumLevel(LogLevel.Information);
 });
+
+builder.Services.AddControllers();
+builder.Services.AddHttpClient<ImageService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -46,5 +50,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapGet("/", () => "NASA APOD Wallpaper API is running.");
+
+app.UseRouting();
+app.MapControllers();
 
 app.Run();
